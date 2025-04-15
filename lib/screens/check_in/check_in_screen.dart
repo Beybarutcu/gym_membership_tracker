@@ -61,7 +61,7 @@ class _CheckInScreenState extends State<CheckInScreen> {
       }
     } catch (e) {
       setState(() {
-        _errorMessage = 'error'.tr + ': $e';
+        _errorMessage = '${'error'.tr}: $e';
         _isLoading = false;
       });
       print("Error initializing check-in screen: $e");
@@ -78,7 +78,7 @@ class _CheckInScreenState extends State<CheckInScreen> {
       });
     } catch (e) {
       setState(() {
-        _errorMessage = 'error'.tr + ': $e';
+        _errorMessage = '${'error'.tr}: $e';
         _isLoading = false;
       });
     }
@@ -128,7 +128,7 @@ class _CheckInScreenState extends State<CheckInScreen> {
       }
     } catch (e) {
       setState(() {
-        _errorMessage = 'error'.tr + ': $e';
+        _errorMessage = '${'error'.tr}: $e';
         _isLoading = false;
       });
     }
@@ -151,7 +151,7 @@ class _CheckInScreenState extends State<CheckInScreen> {
       });
     } catch (e) {
       setState(() {
-        _errorMessage = 'error'.tr + ': $e';
+        _errorMessage = '${'error'.tr}: $e';
         _isLoading = false;
       });
     }
@@ -267,10 +267,10 @@ class _CheckInScreenState extends State<CheckInScreen> {
     // Check monthly membership
     if (_selectedMember!.hasMonthlyMembership) {
       if (_selectedMember!.endDate == null) {
-        message = 'invalidMembership'.tr + ': ' + 'Geçersiz üyelik bitiş tarihi yok';
+        message = '${'invalidMembership'.tr}: Geçersiz üyelik bitiş tarihi yok';
       } else if (_selectedMember!.endDate!.isBefore(DateTime.now())) {
         final formatter = DateFormat('MMM d, yyyy');
-        message = 'membershipExpired'.tr + ': ' + formatter.format(_selectedMember!.endDate!);
+        message = '${'membershipExpired'.tr}: ${formatter.format(_selectedMember!.endDate!)}';
       } else if (!_selectedMember!.lessons.contains(_selectedLesson)) {
         message = 'lessonNotIncluded'.tr;
       }
@@ -361,7 +361,7 @@ class _CheckInScreenState extends State<CheckInScreen> {
     } catch (e) {
       if (!mounted) return;
       setState(() {
-        _errorMessage = 'error'.tr + ': $e';
+        _errorMessage = '${'error'.tr}: $e';
         _isLoading = false;
       });
     }
@@ -372,7 +372,7 @@ class _CheckInScreenState extends State<CheckInScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_selectedMember != null 
-            ? 'checkIn'.tr + ': ${_selectedMember!.name}'
+            ? '${'checkIn'.tr}: ${_selectedMember!.name}'
             : 'checkIn'.tr),
         actions: [
           if (_selectedMember != null)
@@ -511,7 +511,7 @@ class _CheckInScreenState extends State<CheckInScreen> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Text(
-            '${_members.length} ' + 'members'.tr,
+            '${_members.length} ${'members'.tr}',
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
@@ -584,13 +584,13 @@ class _CheckInScreenState extends State<CheckInScreen> {
     
     if (isExpired) {
       statusColor = Colors.red;
-      statusText = 'status'.tr + ': ' + 'expired'.tr;
+      statusText = '${'status'.tr}: ${'expired'.tr}';
     } else if (hasLowSessions || isMonthlyExpiringSoon) {
       statusColor = Colors.orange;
-      statusText = 'status'.tr + ': ' + 'expiringSoon'.tr;
+      statusText = '${'status'.tr}: ${'expiringSoon'.tr}';
     } else {
       statusColor = Colors.green;
-      statusText = 'status'.tr + ': ' + 'active'.tr;
+      statusText = '${'status'.tr}: ${'active'.tr}';
     }
     
     return Card(
@@ -662,7 +662,7 @@ class _CheckInScreenState extends State<CheckInScreen> {
     // Check package sessions
     member.lessonSessions.forEach((lesson, sessions) {
       if (sessions > 0 && sessions <= 2) {
-        details.add('$lesson: $sessions ' + 'sessionsLeft'.tr);
+        details.add('$lesson: $sessions ${'sessionsLeft'.tr}');
       }
     });
     
@@ -670,7 +670,7 @@ class _CheckInScreenState extends State<CheckInScreen> {
     if (member.hasMonthlyMembership && member.endDate != null) {
       final daysLeft = member.endDate!.difference(DateTime.now()).inDays;
       if (daysLeft <= 7 && daysLeft > 0) {
-        details.add('Monthly'.tr + ': $daysLeft ' + 'daysLeft'.tr);
+        details.add('${'Monthly'.tr}: $daysLeft ${'daysLeft'.tr}');
       }
     }
     
@@ -791,10 +791,10 @@ class _CheckInScreenState extends State<CheckInScreen> {
                         const SizedBox(width: 8),
                         Text(
                           isExpired 
-                              ? 'status'.tr + ': ' + 'expired'.tr
+                              ? '${'status'.tr}: ${'expired'.tr}'
                               : (hasLowSessions || isMonthlyExpiringSoon)
-                                  ? 'status'.tr + ': ' + 'expiringSoon'.tr
-                                  : 'status'.tr + ': ' + 'active'.tr,
+                                  ? '${'status'.tr}: ${'expiringSoon'.tr}'
+                                  : '${'status'.tr}: ${'active'.tr}',
                           style: TextStyle(
                             fontSize: 16,
                             color: isExpired 
@@ -944,7 +944,7 @@ class _CheckInScreenState extends State<CheckInScreen> {
               border: Border.all(color: Colors.orange.shade200),
             ),
             child: Text(
-              '$lesson: $sessions ' + 'sessionsLeft'.tr,
+              '$lesson: $sessions ${'sessionsLeft'.tr}',
               style: TextStyle(
                 fontSize: 12,
                 color: Colors.orange.shade800,
@@ -969,7 +969,7 @@ class _CheckInScreenState extends State<CheckInScreen> {
               border: Border.all(color: Colors.orange.shade200),
             ),
             child: Text(
-              'monthlyMembership'.tr + ': $daysLeft ' + 'daysLeft'.tr,
+              '${'monthlyMembership'.tr}: $daysLeft ${'daysLeft'.tr}',
               style: TextStyle(
                 fontSize: 12,
                 color: Colors.orange.shade800,

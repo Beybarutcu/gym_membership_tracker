@@ -27,8 +27,8 @@ class Member {
     this.remainingSessions,
     bool? hasMonthlyMembership,
   }) : 
-    this.membershipType = membershipType ?? 'Monthly',
-    this.hasMonthlyMembership = hasMonthlyMembership ?? (membershipType == 'Monthly');
+    membershipType = membershipType ?? 'Monthly',
+    hasMonthlyMembership = hasMonthlyMembership ?? (membershipType == 'Monthly');
 
   // For fromMap with older schema
   static Member fromMap(Map<String, dynamic> map) {

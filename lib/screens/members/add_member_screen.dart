@@ -30,10 +30,10 @@ class _AddMemberScreenState extends State<AddMemberScreen> {
   bool _hasMonthlyMembership = true;
   DateTime _startDate = DateTime.now();
   DateTime _endDate = DateTime.now().add(const Duration(days: 30));
-  List<String> _selectedMonthlyLessons = [];
+  final List<String> _selectedMonthlyLessons = [];
   
   // Package sessions
-  Map<String, int> _packageSessions = {};
+  final Map<String, int> _packageSessions = {};
   
   bool _isLoading = true;
   
@@ -49,7 +49,7 @@ class _AddMemberScreenState extends State<AddMemberScreen> {
     try {
       _lessonTypes = await _memberService.getAllLessonTypes();
     } catch (e) {
-      _showErrorSnackBar('error'.tr + ': $e');
+      _showErrorSnackBar('${'error'.tr}: $e');
     } finally {
       setState(() => _isLoading = false);
     }
@@ -317,8 +317,8 @@ class _AddMemberScreenState extends State<AddMemberScreen> {
             ),
             const Divider(),
             if (_packageSessions.isEmpty) 
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Text('Paket seans eklenmedi'),
               )
             else
@@ -330,7 +330,7 @@ class _AddMemberScreenState extends State<AddMemberScreen> {
                   final entry = _packageSessions.entries.elementAt(index);
                   return ListTile(
                     title: Text(entry.key),
-                    subtitle: Text('${entry.value} ' + 'remainingSessions'.tr),
+                    subtitle: Text('${entry.value} ${'remainingSessions'.tr}'),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -353,8 +353,8 @@ class _AddMemberScreenState extends State<AddMemberScreen> {
               ),
               
             const SizedBox(height: 8),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
               child: Text(
                 'Not: Üyeler aynı anda paket seans ve aylık üyelik alabilirler.',
                 style: TextStyle(color: Colors.grey, fontStyle: FontStyle.italic),
@@ -460,7 +460,7 @@ class _AddMemberScreenState extends State<AddMemberScreen> {
     final result = await showDialog<int>(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('$lessonType ' + 'edit'.tr),
+        title: Text('$lessonType ${'edit'.tr}'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

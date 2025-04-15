@@ -50,7 +50,7 @@ class _MemberDetailScreenState extends State<MemberDetailScreen> {
       // Load attendance history
       _attendanceHistory = await _attendanceService.getMemberAttendance(_member!.id!);
     } catch (e) {
-      _showErrorMessage('error'.tr + ': $e');
+      _showErrorMessage('${'error'.tr}: $e');
     } finally {
       setState(() => _isLoading = false);
     }
@@ -218,7 +218,7 @@ class _MemberDetailScreenState extends State<MemberDetailScreen> {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'availableLessons'.tr + ':',
+                      '${'availableLessons'.tr}:',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.blue.shade800,
@@ -274,7 +274,7 @@ class _MemberDetailScreenState extends State<MemberDetailScreen> {
                     ..._member!.lessonSessions.entries.map((entry) => 
                       _buildInfoRow(
                         entry.key,
-                        '${entry.value} ' + 'remainingSessions'.tr,
+                        '${entry.value} ${'remainingSessions'.tr}',
                         valueColor: entry.value > 0 ? Colors.green : Colors.red,
                       ),
                     ).toList(),
@@ -389,9 +389,7 @@ class _MemberDetailScreenState extends State<MemberDetailScreen> {
       builder: (context) => AlertDialog(
         title: Text('delete'.tr),
         content: Text(
-          'areYouSure'.tr + ' ' + 
-          attendance.lessonType + ' ' + 
-          DateFormat('MMM d, yyyy').format(attendance.dateTime) + '?'
+          '${'areYouSure'.tr} ${attendance.lessonType} ${DateFormat('MMM d, yyyy').format(attendance.dateTime)}?'
         ),
         actions: [
           TextButton(
@@ -425,7 +423,7 @@ class _MemberDetailScreenState extends State<MemberDetailScreen> {
       );
     } catch (e) {
       if (!mounted) return;
-      _showErrorMessage('error'.tr + ': $e');
+      _showErrorMessage('${'error'.tr}: $e');
       setState(() => _isLoading = false);
     }
   }

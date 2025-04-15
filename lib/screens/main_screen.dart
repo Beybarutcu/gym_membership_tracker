@@ -106,8 +106,8 @@ class _MainScreenState extends State<MainScreen> {
               // Add a unique heroTag to prevent conflicts
               heroTag: "fab_${currentDestination.title}",
               onPressed: currentDestination.fabAction,
-              child: Icon(currentDestination.fabIcon),
               tooltip: currentDestination.fabTooltip,
+              child: Icon(currentDestination.fabIcon),
             )
           : null,
     );
@@ -125,7 +125,7 @@ class _MainScreenState extends State<MainScreen> {
             ListTile(
               leading: const Icon(Icons.info_outline),
               title: Text('appInfo'.tr),
-              subtitle: Text('appTitle'.tr + ' v1.0'),
+              subtitle: Text('${'appTitle'.tr} v1.0'),
               onTap: () {},
             ),
             ListTile(
@@ -179,7 +179,7 @@ class _MainScreenState extends State<MainScreen> {
   void _navigateToAddMember() {
     Navigator.of(context).push(
       MaterialPageRoute(
-        settings: RouteSettings(name: '/add_member'), // Unique route name
+        settings: const RouteSettings(name: '/add_member'), // Unique route name
         builder: (context) => AddMemberScreen(database: widget.database),
       ),
     ).then((_) {
@@ -191,7 +191,7 @@ class _MainScreenState extends State<MainScreen> {
   void _navigateToCheckIn() {
     Navigator.of(context).push(
       MaterialPageRoute(
-        settings: RouteSettings(name: '/check_in'), // Unique route name
+        settings: const RouteSettings(name: '/check_in'), // Unique route name
         builder: (context) => CheckInScreen(database: widget.database),
       ),
     ).then((_) {

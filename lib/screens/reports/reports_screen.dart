@@ -426,7 +426,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
       setState(() => _isLoading = false);
       
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('error'.tr + ': $e')),
+        SnackBar(content: Text('${'error'.tr}: $e')),
       );
     }
   }
@@ -517,16 +517,16 @@ class ExpiringMembershipsDetailScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('endDate'.tr + ': ${dateFormat.format(member.endDate!)}'),
+                    Text('${'endDate'.tr}: ${dateFormat.format(member.endDate!)}'),
                     Text(
-                      'daysLeft'.tr + ': ${member.endDate!.difference(DateTime.now()).inDays}',
+                      '${'daysLeft'.tr}: ${member.endDate!.difference(DateTime.now()).inDays}',
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.red,
                       ),
                     ),
                     const SizedBox(height: 4),
-                    Text('availableLessons'.tr + ':'),
+                    Text('${'availableLessons'.tr}:'),
                     const SizedBox(height: 4),
                     Wrap(
                       spacing: 4,
@@ -571,7 +571,7 @@ class ExpiringMembershipsDetailScreen extends StatelessWidget {
                               ),
                             ),
                             child: Text(
-                              '${entry.value} ' + 'sessionsLeft'.tr,
+                              '${entry.value} ${'sessionsLeft'.tr}',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: isLow ? Colors.red.shade800 : Colors.green.shade800,

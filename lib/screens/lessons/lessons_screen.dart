@@ -154,7 +154,7 @@ class _LessonsScreenState extends State<LessonsScreen> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('${lessonType} adlı dersi kaldır?'),
+        title: Text('$lessonType adlı dersi kaldır?'),
         content: count > 0
             ? Text('Bu dersin $count adet derse katılım kaydı var. Kaldırmak üye verilerine zarar verebilir. Kaldırmak istediğinize emin misiniz?')
             : const Text('Bu dersi kaldırmak istediğinize emin misiniz?'),

@@ -51,10 +51,8 @@ class _EditMemberScreenState extends State<EditMemberScreen> {
     
     // Initialize membership info
     _hasMonthlyMembership = widget.member.hasMonthlyMembership;
-    if (widget.member.startDate != null) {
-      _monthlyStartDate = widget.member.startDate;
-    }
-    if (widget.member.endDate != null) {
+    _monthlyStartDate = widget.member.startDate;
+      if (widget.member.endDate != null) {
       _monthlyEndDate = widget.member.endDate!;
     }
     
@@ -94,7 +92,7 @@ class _EditMemberScreenState extends State<EditMemberScreen> {
       onWillPop: _confirmExit,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('editMember'.tr + ': ${widget.member.name}'),
+          title: Text('${'editMember'.tr}: ${widget.member.name}'),
           actions: [
             TextButton(
               onPressed: _saveMember,
@@ -116,7 +114,7 @@ class _EditMemberScreenState extends State<EditMemberScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text('areYouSure'.tr),
-        content: Text('Kaydedilmemiş değişiklikleriniz var. Çıkmak istediğinizden emin misiniz?'),
+        content: const Text('Kaydedilmemiş değişiklikleriniz var. Çıkmak istediğinizden emin misiniz?'),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
@@ -306,11 +304,11 @@ class _EditMemberScreenState extends State<EditMemberScreen> {
             ],
             if (!_hasMonthlyMembership) ...[
               const Divider(),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Text(
                   'Aylık üyelik devre dışı. Tarihleri ve dersleri ayarlamak için etkinleştirin.',
-                  style: const TextStyle(color: Colors.grey),
+                  style: TextStyle(color: Colors.grey),
                 ),
               ),
             ],
@@ -345,8 +343,8 @@ class _EditMemberScreenState extends State<EditMemberScreen> {
             ),
             const Divider(),
             if (_packageSessions.isEmpty)
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Text('Paket seans eklenmedi'),
               )
             else
@@ -358,7 +356,7 @@ class _EditMemberScreenState extends State<EditMemberScreen> {
                   final entry = _packageSessions.entries.elementAt(index);
                   return ListTile(
                     title: Text(entry.key),
-                    subtitle: Text('${entry.value} ' + 'remainingSessions'.tr),
+                    subtitle: Text('${entry.value} ${'remainingSessions'.tr}'),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -381,11 +379,11 @@ class _EditMemberScreenState extends State<EditMemberScreen> {
                 },
               ),
             const SizedBox(height: 8),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
               child: Text(
                 'Not: Üyeler aynı anda aylık üyelik ve paket seanslarına sahip olabilirler.',
-                style: const TextStyle(color: Colors.grey, fontStyle: FontStyle.italic),
+                style: TextStyle(color: Colors.grey, fontStyle: FontStyle.italic),
               ),
             ),
           ],
@@ -499,7 +497,7 @@ class _EditMemberScreenState extends State<EditMemberScreen> {
     final result = await showDialog<int>(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('$lessonType ' + 'edit'.tr),
+        title: Text('$lessonType ${'edit'.tr}'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -556,7 +554,7 @@ class _EditMemberScreenState extends State<EditMemberScreen> {
     // Validate membership settings
     if (_hasMonthlyMembership && _monthlyLessons.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Lütfen aylık üyelik için en az bir ders seçin'),
           backgroundColor: Colors.red,
         ),
@@ -567,7 +565,7 @@ class _EditMemberScreenState extends State<EditMemberScreen> {
     // Check if member has any valid membership option
     if (!_hasMonthlyMembership && _packageSessions.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Lütfen aylık üyeliği etkinleştirin veya en az bir paket ekleyin'),
           backgroundColor: Colors.red,
         ),
@@ -618,7 +616,7 @@ class _EditMemberScreenState extends State<EditMemberScreen> {
         Navigator.pop(context);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('Üye güncellenirken hata oluştu'),
             backgroundColor: Colors.red,
           ),

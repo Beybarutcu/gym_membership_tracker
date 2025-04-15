@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:path/path.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:intl/intl.dart';
 
 // For desktop platforms
@@ -34,8 +33,8 @@ class DatabaseService {
     final dbPath = await getDatabasesPath();
     final path = join(dbPath, 'gym_membership.db');
     
-    // Delete existing database to recreate it with the correct schema
-    await deleteDatabase(path);
+    // REMOVED: Delete existing database line
+    // This was causing all your data to be lost on restart
     
     return await openDatabase(
       path,

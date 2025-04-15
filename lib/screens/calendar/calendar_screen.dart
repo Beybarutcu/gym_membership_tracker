@@ -59,7 +59,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
         _loadExpiringMemberships(),
       ]);
     } catch (e) {
-      _showErrorMessage('error'.tr + ': $e');
+      _showErrorMessage('${'error'.tr}: $e');
     } finally {
       setState(() => _isLoading = false);
     }
@@ -193,8 +193,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
           ),
       floatingActionButton: FloatingActionButton(
         onPressed: _navigateToCheckIn,
-        child: const Icon(Icons.add_task),
         tooltip: 'quickCheckIn'.tr,
+        child: const Icon(Icons.add_task),
       ),
     );
   }
@@ -365,7 +365,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
             const Icon(Icons.event_note, size: 64, color: Colors.grey),
             const SizedBox(height: 16),
             Text(
-              '$formattedDate için ' + 'noEvents'.tr,
+              '$formattedDate için ${'noEvents'.tr}',
               style: const TextStyle(fontSize: 16, color: Colors.grey),
             ),
             const SizedBox(height: 16),
@@ -387,7 +387,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
             child: Text(
               'expiringMemberships'.tr,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
                 color: Colors.orange,
@@ -404,9 +404,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
                   child: Icon(Icons.calendar_today, color: Colors.white),
                 ),
                 title: Text(event.memberName),
-                subtitle: Text(
+                subtitle: const Text(
                   'Üyelik bu gün sona erecek',
-                  style: const TextStyle(color: Colors.orange),
+                  style: TextStyle(color: Colors.orange),
                 ),
                 trailing: IconButton(
                   icon: const Icon(Icons.person),
@@ -422,7 +422,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
               padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
               child: Text(
                 'checkIns'.tr,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
                 ),
@@ -499,13 +499,13 @@ class _CalendarScreenState extends State<CalendarScreen> {
         return Card(
           margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: ListTile(
-            leading: CircleAvatar(
+            leading: const CircleAvatar(
               backgroundColor: Colors.orange,
-              child: const Icon(Icons.warning, color: Colors.white),
+              child: Icon(Icons.warning, color: Colors.white),
             ),
             title: Text(member['name'] ?? 'Bilinmeyen Üye'),
             subtitle: Text(
-              '$formattedDate ' + 'endDate'.tr,
+              '$formattedDate ${'endDate'.tr}',
             ),
             trailing: Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -515,7 +515,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 border: Border.all(color: Colors.red.shade300),
               ),
               child: Text(
-                '$daysLeft ' + 'daysLeft'.tr,
+                '$daysLeft ${'daysLeft'.tr}',
                 style: TextStyle(
                   color: Colors.red.shade800,
                   fontWeight: FontWeight.bold,
@@ -543,7 +543,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
       builder: (context) => AlertDialog(
         title: Text('delete'.tr),
         content: Text(
-          'areYouSure'.tr + ' ' + event.memberName + '?'
+          '${'areYouSure'.tr} ${event.memberName}?'
         ),
         actions: [
           TextButton(
@@ -574,7 +574,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
       );
     } catch (e) {
       if (!mounted) return;
-      _showErrorMessage('error'.tr + ': $e');
+      _showErrorMessage('${'error'.tr}: $e');
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }

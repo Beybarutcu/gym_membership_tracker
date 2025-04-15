@@ -46,15 +46,15 @@ class ReportService {
     if (startDate != null && endDate != null) {
       whereClause = "WHERE date BETWEEN ? AND ?";
       whereArgs = [
-        dateFormat.format(startDate) + " 00:00:00", 
-        dateFormat.format(endDate) + " 23:59:59"
+        "${dateFormat.format(startDate)} 00:00:00", 
+        "${dateFormat.format(endDate)} 23:59:59"
       ];
     } else if (startDate != null) {
       whereClause = "WHERE date >= ?";
-      whereArgs = [dateFormat.format(startDate) + " 00:00:00"];
+      whereArgs = ["${dateFormat.format(startDate)} 00:00:00"];
     } else if (endDate != null) {
       whereClause = "WHERE date <= ?";
-      whereArgs = [dateFormat.format(endDate) + " 23:59:59"];
+      whereArgs = ["${dateFormat.format(endDate)} 23:59:59"];
     }
     
     // Get total attendance count
@@ -126,7 +126,7 @@ class ReportService {
       final startStr = monthStart.toIso8601String().split('T')[0];
       final endStr = monthEnd.toIso8601String().split('T')[0];
       
-      final expiryQuery = '''
+      const expiryQuery = '''
         SELECT COUNT(*) as count
         FROM members
         WHERE membership_type = 'Monthly' 

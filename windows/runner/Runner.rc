@@ -38,12 +38,12 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "Your Company Name"
+            VALUE "CompanyName", "FlowersFit"
             VALUE "FileDescription", "Flowers Fit Üyelik Takibi"
             VALUE "FileVersion", VERSION_AS_STRING
             VALUE "InternalName", "flowers_fit"
             VALUE "LegalCopyright", "Copyright (C) 2025 Your Company"
-            VALUE "OriginalFilename", "flowers_fit.exe"
+            VALUE "OriginalFilename", "FlowersFit_Üyelik_Takibi.exe"
             VALUE "ProductName", "Flowers Fit Üyelik Takibi"
             VALUE "ProductVersion", VERSION_AS_STRING
         END

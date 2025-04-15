@@ -117,7 +117,7 @@ class _MembersScreenState extends State<MembersScreen> with AutomaticKeepAliveCl
     } catch (e) {
       print("Error loading members: $e");
       if (mounted && !silently) {
-        _showErrorMessage('error'.tr + ': ' + e.toString());
+        _showErrorMessage('${'error'.tr}: $e');
         setState(() => _isLoading = false);
       }
     }
@@ -143,7 +143,7 @@ class _MembersScreenState extends State<MembersScreen> with AutomaticKeepAliveCl
       }
     } catch (e) {
       if (mounted) {
-        _showErrorMessage('error'.tr + ': ' + e.toString());
+        _showErrorMessage('${'error'.tr}: $e');
         setState(() => _isLoading = false);
       }
     }
@@ -175,8 +175,8 @@ class _MembersScreenState extends State<MembersScreen> with AutomaticKeepAliveCl
         // Add a unique hero tag to prevent conflicts
         heroTag: "members_fab",
         onPressed: _addNewMember,
-        child: const Icon(Icons.person_add),
         tooltip: 'addMember'.tr,
+        child: const Icon(Icons.person_add),
       ),
     );
   }
@@ -187,7 +187,7 @@ class _MembersScreenState extends State<MembersScreen> with AutomaticKeepAliveCl
       child: TextField(
         controller: _searchController,
         decoration: InputDecoration(
-          hintText: 'search'.tr + '...',
+          hintText: '${'search'.tr}...',
           prefixIcon: const Icon(Icons.search),
           suffixIcon: Row(
             mainAxisSize: MainAxisSize.min,
@@ -229,7 +229,7 @@ class _MembersScreenState extends State<MembersScreen> with AutomaticKeepAliveCl
             Text(
               _searchController.text.isEmpty
                   ? 'noMembers'.tr
-                  : 'noMembers'.tr + ': "${_searchController.text}"',
+                  : '${'noMembers'.tr}: "${_searchController.text}"',
               style: const TextStyle(fontSize: 18, color: Colors.grey),
             ),
             const SizedBox(height: 16),
@@ -410,7 +410,7 @@ class _MembersScreenState extends State<MembersScreen> with AutomaticKeepAliveCl
       context: context,
       builder: (context) => AlertDialog(
         title: Text('confirmDelete'.tr),
-        content: Text('areYouSure'.tr + ' ${member.name}?'),
+        content: Text('${'areYouSure'.tr} ${member.name}?'),
         actions: [
           TextButton(
             child: Text('cancel'.tr),
@@ -437,7 +437,7 @@ class _MembersScreenState extends State<MembersScreen> with AutomaticKeepAliveCl
       
       if (success) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('${member.name} ' + 'success'.tr)),
+          SnackBar(content: Text('${member.name} ${'success'.tr}')),
         );
         
         // Reload members list
@@ -448,7 +448,7 @@ class _MembersScreenState extends State<MembersScreen> with AutomaticKeepAliveCl
       }
     } catch (e) {
       if (!mounted) return;
-      _showErrorMessage('error'.tr + ': $e');
+      _showErrorMessage('${'error'.tr}: $e');
       setState(() => _isLoading = false);
     }
   }
@@ -496,7 +496,7 @@ class _MembersScreenState extends State<MembersScreen> with AutomaticKeepAliveCl
     Navigator.of(context).push(
       MaterialPageRoute(
         // Add unique route settings name
-        settings: RouteSettings(name: '/add_member'),
+        settings: const RouteSettings(name: '/add_member'),
         builder: (context) => AddMemberScreen(database: widget.database),
       ),
     ).then((_) {

@@ -6,7 +6,7 @@ class LocalizationService {
   static final LocalizationService _instance = LocalizationService._internal();
   static Map<String, String> _translations = {};
   static bool _initialized = false;
-  static Locale _currentLocale = const Locale('tr', 'TR');
+  static final Locale _currentLocale = const Locale('tr', 'TR');
 
   factory LocalizationService() => _instance;
 
